@@ -1,4 +1,5 @@
 import './App.css';
+import axios, {AxiosResponse} from 'axios';
 import NavBar from './componentes/navbar/NavBar';
 import {Route, Routes} from 'react-router-dom'
 import CrudTable from "./componentes/CrudTable";
@@ -7,18 +8,28 @@ import Registrar from "./componentes/Registrar";
 import PrivateRoute from './componentes/rutas/PrivateRoute';
 import Home from './componentes/Home';
 import { useLogeado } from './componentes/variables-globales/initialProvider';
+import { urls } from './componentes/variables-globales/InitialReducer';
+import React, { useEffect } from 'react';
 
 
 function App() {
 
-  const estado = useLogeado();
+  const {Citas} = urls;
+  // const estado = useLogeado();
 
-  const {logeado} = estado;
-  console.log(logeado)
+  // const {logeado} = estado;
+  // console.log(logeado)
+
+  useEffect(() => {
+    axios.get(Citas)
+      .then((respuesta: AxiosResponse<any>) => {
+        console.log(respuesta.data);
+      })
+  }, [])
 
   return (
     <div className="App">
-        <Routes>
+        {/* <Routes>
             <Route path='*' element={<h1>Not Found!!</h1>} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/" element={<NavBar  />} >
@@ -38,7 +49,7 @@ function App() {
                 } 
                 />
             </Route>
-        </Routes>
+        </Routes> */}
     </div>
   );
 }
