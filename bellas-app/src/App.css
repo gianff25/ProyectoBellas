@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+
+.login{
+  margin: 30vh 25vw;
+  width: 40vw;
+  position: absolute;
+}
+
+.editInput{
+  margin: 1vh 0vw;
+}
