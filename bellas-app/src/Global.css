@@ -93,3 +93,14 @@
   background-color: rgba(247, 182, 225, 0.829);
   padding: 0vh 23vw;
 } 
+
+.registro{
+  background-color: rgb(255, 255, 255);
+  width: 70vw;
+  height: 70vh;
+  margin: 15vh 8vw;
+  border-radius: 5vh;
+  position: absolute;
+  border: 0.1vh solid black;
+  padding: 4vh 0vw 0vh 10vw;
+}

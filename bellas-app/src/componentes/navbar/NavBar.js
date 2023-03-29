@@ -11,17 +11,19 @@ const NavBar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [current, setCurrent] = useState('mail');
+
     const onClick = (e) => {
+
       console.log('click ', e);
       setCurrent(e.key);
       if(e.key === 'logout'){
         localStorage.setItem('logeado', 0);
+        localStorage.removeItem('usuario')
         dispatch({type: types.authLogout});  
         navigate('/login');
-
       }
     };
-    console.log(dispatch);
+
     return(
         <>
         <Menu 
