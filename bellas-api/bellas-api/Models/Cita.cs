@@ -9,9 +9,9 @@ public partial class Cita
 
     public DateTime Fecha { get; set; }
 
-    public Usuario Usuario { get; set; }
+    public string UsuarioId { get; set; } = null!;
 
-    public Servicio Servicio { get; set; }
+    public string ServicioId { get; set; } = null!;
 
     public bool? Activo { get; set; }
 

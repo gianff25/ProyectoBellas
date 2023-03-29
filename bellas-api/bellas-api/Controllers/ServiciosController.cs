@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using bellas_api.DbContexts;
 using bellas_api.Models;
-using Microsoft.AspNetCore.Mvc;
 
 namespace bellas_api.Controllers
 {

@@ -3,7 +3,7 @@ import axios, {AxiosResponse} from 'axios';
 import NavBar from './componentes/navbar/NavBar';
 import {Route, Routes} from 'react-router-dom'
 import CrudTable from "./componentes/CrudTable";
-import Login from "./componentes/Login";
+import Login from './componentes/Login.tsx';
 import Registrar from "./componentes/Registrar";
 import PrivateRoute from './componentes/rutas/PrivateRoute';
 import Home from './componentes/Home';
@@ -15,32 +15,32 @@ import React, { useEffect } from 'react';
 function App() {
 
   const {Citas} = urls;
-  // const estado = useLogeado();
+  const estado = useLogeado();
 
-  // const {logeado} = estado;
+  const {logeado} = estado;
   // console.log(logeado)
 
-  useEffect(() => {
-    axios.get(Citas)
-      .then((respuesta: AxiosResponse<any>) => {
-        console.log(respuesta.data);
-      })
-  }, [])
+  // useEffect(() => {
+  //   axios.get(Citas)
+  //     .then((respuesta: AxiosResponse<any>) => {
+  //       console.log(respuesta.data);
+  //     })
+  // }, [])
 
   return (
     <div className="App">
-        {/* <Routes>
+        <Routes>
             <Route path='*' element={<h1>Not Found!!</h1>} />
             <Route exact path="/login" element={<Login />} />
-            <Route exact path="/" element={<NavBar  />} >
-              <Route index element={<Home />} />
-              <Route exact path="/registrar" 
+            <Route exact path="/registrar" 
                 element={
-                  <PrivateRoute logeado={logeado} redirectTo={logeado === 1 ? "/" : "/login"} isRol={true} >
+                  <PrivateRoute logeado={logeado} redirectTo={logeado == 0 ? "/registrar" : "/"} isRegistro={true}>
                     <Registrar/>
                   </PrivateRoute>
                 }
               />
+            <Route exact path="/" element={<NavBar  />} >
+              <Route index element={<Home />} />
               <Route path="/datos" 
                 element={
                   <PrivateRoute logeado={logeado} redirectTo="/login" >
@@ -49,7 +49,7 @@ function App() {
                 } 
                 />
             </Route>
-        </Routes> */}
+        </Routes>
     </div>
   );
 }

@@ -8,11 +8,6 @@ const items = [
       icon: <HomeOutlined />,
     },
     {
-      label: <Link to="/registrar">Registrar</Link>,
-      key: 'registrar',
-      icon: <UserAddOutlined />,
-    },
-    {
       label: <Link to="/datos">Mostrar Datos</Link>,
       key: 'datos',
       icon: <DatabaseOutlined />,

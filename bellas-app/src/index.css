@@ -5,6 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.521),
+    rgba(241, 166, 241, 0.603)
+  ), url("./contenido/logo.jpg");
+  background-size: 10%;
+  width: 100wh;
+  height: 100vh;
 }
 
 code {

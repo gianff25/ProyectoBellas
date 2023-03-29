@@ -18,8 +18,8 @@ public class Usuario
     public string? Correo { get; set; }
 
     public string Contraseña { get; set; } = null!;
-   
-    public Rol Rol { get; set; }
+
+    public string RolId { get; set; } = null!;
 
     //public virtual ICollection<Cita> Cita { get; } = new List<Cita>();
 
