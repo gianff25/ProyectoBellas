@@ -1,4 +1,4 @@
-import { DatabaseOutlined, UserAddOutlined, HomeOutlined, LogoutOutlined } from '@ant-design/icons';
+import { DatabaseOutlined, SettingOutlined, HomeOutlined, LogoutOutlined, ScheduleOutlined } from '@ant-design/icons';
 import {Link} from 'react-router-dom'
 
 const items = [
@@ -8,9 +8,20 @@ const items = [
       icon: <HomeOutlined />,
     },
     {
-      label: <Link to="/datos">Mostrar Datos</Link>,
+      label: <Link to="/datos">Citas</Link>,
       key: 'datos',
-      icon: <DatabaseOutlined />,
+      icon: <ScheduleOutlined />,
+    },
+    {
+      label: <Link>Administrador</Link>,
+      key:'admin',
+      icon: <SettingOutlined />,
+      children:[
+        {
+          label: <Link to="/servicios">Servicios</Link>,
+          key: 'servicios'
+        }
+      ]
     },
     {
       label: <Link>Cerrar Sesion</Link>,

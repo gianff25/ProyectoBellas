@@ -104,3 +104,14 @@
   border: 0.1vh solid black;
   padding: 4vh 0vw 0vh 10vw;
 }
+
+.servicios{
+  margin: 10vh 13vw;
+  background-color: rgba(243, 197, 235, 0.747);
+  width: max-content;
+  height: max-content;
+  position: absolute;
+  border-radius: 20px;
+  border: 1px solid rgba(70, 62, 62, 0.13);
+  padding: 5vh 2vw;
+}

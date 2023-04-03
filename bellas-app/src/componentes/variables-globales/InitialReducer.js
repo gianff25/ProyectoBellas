@@ -11,7 +11,7 @@ const initialState = {
 
 const urls = {
     Citas: 'https://localhost:7183/api/Citas',
-    Servicios: 'https://localhost:7183/api/Servicios' ,
+    Servicios: 'https://localhost:7183/api/Servicios/' ,
     Roles: 'https://localhost:7183/api/Rols',
     Usuarios: 'https://localhost:7183/api/Usuarios' 
 }

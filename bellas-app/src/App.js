@@ -9,6 +9,7 @@ import PrivateRoute from './componentes/rutas/PrivateRoute';
 import Home from './componentes/Home';
 import { useLogeado } from './componentes/variables-globales/initialProvider';
 import { urls } from './componentes/variables-globales/InitialReducer';
+import Servicios from './componentes/servicios/Servicios';
 // import React, { useEffect } from 'react';
 
 
@@ -40,14 +41,27 @@ function App() {
                 }
               />
             <Route exact path="/" element={<NavBar  />} >
-              <Route index element={<Home />} />
+              <Route index 
+                element={
+                  <PrivateRoute logeado={logeado} redirectTo={"/login"}>
+                    <Home />
+                  </PrivateRoute>
+                } 
+              />
               <Route path="/datos" 
                 element={
                   <PrivateRoute logeado={logeado} redirectTo="/login" >
                     <CrudTable />
                   </PrivateRoute>
                 } 
-                />
+              />
+              <Route path="/servicios" 
+                element={
+                  <PrivateRoute logeado={logeado} redirectTo="/login" >
+                    <Servicios />
+                  </PrivateRoute>
+                } 
+              />
             </Route>
         </Routes>
     </div>

@@ -61,7 +61,7 @@ const Registrar = () => {
                   })
             }
             else{
-                await fetch('https://localhost:7183/api/Usuarios/', {
+                await fetch(Usuarios, {
                     method: 'POST',
                     // body: {
                     //         "nombre": nuevoUsuario.nombre,
@@ -104,8 +104,9 @@ const Registrar = () => {
     const irLogin = () => {
 
         let campos = form.getFieldsValue()
+        console.log(campos)
 
-        if((campos.nombre || campos.apellidoPaterno || campos.apellidoMaterno || campos. contrasena || campos.contrasena2 || campos.correo) != '' || campos.telefono != null){
+        if((campos.nombre || campos.apellidoPaterno || campos.apellidoMaterno || campos. contrasena || campos.contrasena2 || campos.correo || campos.telefono) != ('' || undefined) ){
             console.log('hay datos')
             Swal.fire({
                 title: 'Seguro que desea regresar al inicio?',

@@ -42,6 +42,7 @@ namespace bellas_api.Controllers
           }
             var usuario = await _context.Usuarios.FindAsync(id);
 
+
             if (usuario == null)
             {
                 return NotFound();
@@ -105,12 +106,14 @@ namespace bellas_api.Controllers
                 return NotFound();
             }
             var usuario = await _context.Usuarios.FindAsync(id);
+            //var usuario1 = await _context.Usuarios.Where(e=> e.Contraseña == e.Telefono ).ToList();
             if (usuario == null)
             {
                 return NotFound();
             }
 
             _context.Usuarios.Remove(usuario);
+            //_context.Usuarios.RemoveRange(usuario);
             await _context.SaveChangesAsync();
 
             return NoContent();
