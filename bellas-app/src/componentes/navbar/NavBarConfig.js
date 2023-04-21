@@ -8,8 +8,28 @@ const items = [
       icon: <HomeOutlined />,
     },
     {
-      label: <Link to="/datos">Citas</Link>,
-      key: 'datos',
+      label: <Link to="/citas">Citas</Link>,
+      key: 'citas',
+      icon: <ScheduleOutlined />,
+    },
+    {
+      label: <Link>Cerrar Sesion</Link>,
+      danger: true,
+      key: 'logout',
+      icon: <LogoutOutlined />
+    }
+  ];
+  export default items;
+
+  export const iAdmin = [
+    {
+      label: <Link to="/" >Inicio</Link>,
+      key: 'home',
+      icon: <HomeOutlined />,
+    },
+    {
+      label: <Link to="/citas">Citas</Link>,
+      key: 'citas',
       icon: <ScheduleOutlined />,
     },
     {
@@ -20,6 +40,10 @@ const items = [
         {
           label: <Link to="/servicios">Servicios</Link>,
           key: 'servicios'
+        },
+        {
+          label: <Link to="/usuarios">Usuarios</Link>,
+          key: 'usuarios'
         }
       ]
     },
@@ -30,5 +54,3 @@ const items = [
       icon: <LogoutOutlined />
     }
   ];
-
-  export default items;

@@ -10,9 +10,9 @@ body {
     rgba(255, 255, 255, 0.521),
     rgba(241, 166, 241, 0.603)
   ), url("./contenido/logo.jpg");
-  background-size: 10%;
+  background-size: 15%;
   width: 100wh;
-  height: 100vh;
+  height: 120vh;
 }
 
 code {

@@ -10,10 +10,10 @@ const initialState = {
 }
 
 const urls = {
-    Citas: 'https://localhost:7183/api/Citas',
+    Citas: 'https://localhost:7183/api/Citas/',
     Servicios: 'https://localhost:7183/api/Servicios/' ,
     Roles: 'https://localhost:7183/api/Rols',
-    Usuarios: 'https://localhost:7183/api/Usuarios' 
+    Usuarios: 'https://localhost:7183/api/Usuarios/' 
 }
 
 const InitialReducer = (state, action) => {

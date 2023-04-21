@@ -7,11 +7,11 @@ const Fromulario = ({
     dbServicio, 
     onClose,
     setLoading,
-    servicio
+    servicio,
+    url
 }) => {
 
 
-    const {Servicios} = urls;
     const [form] = Form.useForm();
     const {nombre, costo, tiempoEstimado, descripcion} = servicio;
 
@@ -59,11 +59,11 @@ const Fromulario = ({
                       }).then(async(result) => {
                         if (result.isConfirmed) {
                             console.log(servicioEditado)
-                            await fetch(Servicios + servicio.id, {
+                            await fetch(url + servicio.id, {
                                 method: 'PUT',
                                 headers: {
-                                    "Content-Type": "application/json",
-                                },
+                                  "Content-Type": "application/json",
+                              },
                                 body: JSON.stringify(servicioEditado)
                             })
                             setLoading(true);
@@ -77,7 +77,7 @@ const Fromulario = ({
             }
             else{
 
-                await fetch(Servicios, {
+                await fetch(url, {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",
@@ -114,11 +114,11 @@ const Fromulario = ({
                 rules={[
                   {
                     required: true,
-                    message: 'Please enter user name',
+                    message: 'Introducir nombre',
                   },
                 ]}
               >
-                <Input placeholder="Please enter user name" />
+                <Input placeholder="Nombre del servicio" />
               </Form.Item>
             </Col>
             <Col span={6}>
@@ -158,11 +158,11 @@ const Fromulario = ({
                 rules={[
                   {
                     required: true,
-                    message: 'please enter url description',
+                    message: 'Introducir descripción',
                   },
                 ]}
               >
-                <Input.TextArea rows={4} placeholder="please enter url description" />
+                <Input.TextArea rows={4} placeholder="Descripción del servicio" />
               </Form.Item>
             </Col>
           </Row>

@@ -1,44 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState, useEffect} from 'react'
 import { Col, Row, Table, Button, Space, Drawer, Input } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { urls } from '../variables-globales/InitialReducer';
-import Fromulario from './Fromulario';
+import Formulario from './Formulario';
 import Swal from 'sweetalert2';
-import '../../Global.css';
+const Usuarios = () => {
 
-const Servicios = () => {
-
-    const {Servicios} = urls;
-
-    const [dbServicio, setDbServicio] = useState([]);
+    const {Usuarios} = urls;
+    const [db, setDb] = useState([]);
+    const [loading, setLoading] = useState(false)
     const [open, setOpen] = useState(false)
-    const [loading, setLoading] = useState(false);
-    const [servicio, setServicio] = useState(false);
+    const [usuario, setUsuario] = useState();
 
     useEffect(() => {
-        fetch(Servicios)
+        fetch(Usuarios)
         .then(res => res.json())
-        .then(respuesta=> { 
-            console.log(respuesta);
-            setDbServicio(respuesta);
-        })
-        console.log(dbServicio);
+        .then(res => setDb(res))
+
         setLoading(false)
     }, [loading])
 
     const onOpen = (fila) => {
         setOpen(true);
-        setServicio(fila)
+        setUsuario(fila)
     }
 
     const onClose = () => {
         setOpen(false);
     }
 
-    const eliminarServicio = async (id) =>{
+    const eliminar = async (id) =>{
         console.log(id)
         Swal.fire({
-            title: 'Seguro que desea eliminar este servicio?',
+            title: 'Seguro que desea eliminar a este usuario?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -46,26 +40,18 @@ const Servicios = () => {
             confirmButtonText: 'Eliminar'
           }).then(async(result) => {
             if (result.isConfirmed) {
-                await fetch(Servicios + id, {
+                await fetch(Usuarios + id, {
                     method: 'DELETE'
                 })
-                .then(() => {
-                    Swal.fire(
-                        'Servicio Eliminado con exito!',
-                        '',
-                        'success'
-                    )
-                    setLoading(true)
-                });
-
+                .then(() => setLoading(true));
             }
           })
     }
 
     const filtrar = (e) => {
         let busqueda = e.target.value.toLowerCase();
-        setDbServicio(dbServicio.filter(x => x.nombre.toLowerCase().includes(busqueda)))
-        if(busqueda == "" && dbServicio.length == 0){
+        setDb(db.filter(x => x.nombre.toLowerCase().includes(busqueda)))
+        if(busqueda == "" && db.length == 0){
             setLoading(true)
         }
     }
@@ -73,23 +59,23 @@ const Servicios = () => {
     const columns = [
         {
             title: 'Nombre',
-            dataIndex: 'nombre',
-            key: 'nombre'
+            key: 'nombre',
+            dataIndex: 'nombre'
         },
         {
-            title: 'Precio',
-            dataIndex: 'costo',
-            key: 'costo'
+            title: 'Apellido',
+            key: 'apellido1',
+            dataIndex: 'apellido1'
         },
         {
-            title: 'Tiempo Estimado',
-            dataIndex: 'tiempoEstimado',
-            key: 'tiempoEstimado'
+            title: 'Correo',
+            key: 'correo',
+            dataIndex: 'correo'
         },
         {
-            title: 'Descripcción',
-            dataIndex: 'descripcion',
-            key: 'descripcion'
+            title: 'Telefono',
+            key: 'telefono',
+            dataIndex: 'telefono'
         },
         {
             title: 'Acción',
@@ -105,16 +91,15 @@ const Servicios = () => {
 
                 <Button 
                     danger 
-                    onClick={() => eliminarServicio(fila.id)}
+                    onClick={() => eliminar(fila.id)}
                 >
                     <DeleteOutlined /> 
                     Eliminar
                 </Button>
                 </Space>
             ),
-        },
+        }
     ]
-
   return (
     <div className="servicios">
         <Row gutter={16}>
@@ -123,7 +108,7 @@ const Servicios = () => {
                     type='primary'
                     onClick={onOpen}
                 >
-                    Nuevo Servicio
+                    Nuevo Usuario
                 </Button>
             </Col>
             <Col span={16}>
@@ -133,17 +118,16 @@ const Servicios = () => {
                 />
             </Col>
         </Row>
-        <Table 
+        <Table
             style={{
                 margin: "5vh 0vw",
                 width: "70vw",
             }}
+            dataSource={db}
             columns={columns}
-            dataSource={dbServicio}
-            bordered
         />
         <Drawer
-            title="Añadir nuevo servicio"
+            title="Añadir nuevo usuario"
             width={720}
             onClose={() => setOpen(false)}
             open={open}
@@ -151,16 +135,16 @@ const Servicios = () => {
                 paddingBottom: 80,
             }}
         >
-            <Fromulario 
+            <Formulario 
                 onClose={onClose} 
-                dbServicio={dbServicio}
+                db={db}
                 setLoading={setLoading}
-                servicio={servicio}
-                url={Servicios}
+                usuario={usuario}
+                url={Usuarios}
             />
         </Drawer>
     </div>
   )
 }
 
-export default Servicios
+export default Usuarios

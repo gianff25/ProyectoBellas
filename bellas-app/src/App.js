@@ -10,6 +10,8 @@ import Home from './componentes/Home';
 import { useLogeado } from './componentes/variables-globales/initialProvider';
 import { urls } from './componentes/variables-globales/InitialReducer';
 import Servicios from './componentes/servicios/Servicios';
+import Citas from './componentes/citas/Citas';
+import Usuarios from './componentes/usuarios/Usuarios';
 // import React, { useEffect } from 'react';
 
 
@@ -48,10 +50,10 @@ function App() {
                   </PrivateRoute>
                 } 
               />
-              <Route path="/datos" 
+              <Route path="/citas" 
                 element={
                   <PrivateRoute logeado={logeado} redirectTo="/login" >
-                    <CrudTable />
+                    <Citas />
                   </PrivateRoute>
                 } 
               />
@@ -59,6 +61,13 @@ function App() {
                 element={
                   <PrivateRoute logeado={logeado} redirectTo="/login" >
                     <Servicios />
+                  </PrivateRoute>
+                } 
+              />
+              <Route path="/usuarios" 
+                element={
+                  <PrivateRoute logeado={logeado} redirectTo="/login" >
+                    <Usuarios />
                   </PrivateRoute>
                 } 
               />
