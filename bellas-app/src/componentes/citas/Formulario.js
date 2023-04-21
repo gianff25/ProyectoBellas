@@ -2,6 +2,7 @@ import { Button, Col, Form, Input, Row, DatePicker, Space, Select } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { urls } from '../variables-globales/InitialReducer';
 import Swal from 'sweetalert2';
+import moment from 'moment'
 
 const Formulario = ({
     dbCitas, 
@@ -13,37 +14,35 @@ const Formulario = ({
     usuario
 }) => {
 
+
     const [nuevaFecha, setNuevaFecha] = useState();
 
-    // const onChange = (date, dateString) => {
-    //     console.log(date, dateString);
-    //   };
 
     const [form] = Form.useForm();
     const {nombre, costo, fecha, id, servicioId, usuarioId} = opcion;
 
     useEffect(() => {
+        debugger
         if(opcion != null){
             form.setFieldsValue({
                 nombre: usuarioId,
-                fecha: fecha,
+                fecha: moment(fecha).format('DD-MM-YYYY'),
                 servicio: servicioId
             })
         }
     }, [opcion])
+
 
     const AñadirCita = async (values) => {
         console.log(nuevaFecha)
 
         let costoServicio = Servicios.filter(x => x.id === values.servicioId)
 
-        console.log(costoServicio)
-
         let cita = {
             usuarioId: usuario[0].id,
             servicioId: values.servicioId,
             costo: costoServicio[0].costo,
-            fecha: nuevaFecha,
+            fecha: new Date(values.fecha),
             activo: true
         }
 
@@ -64,7 +63,7 @@ const Formulario = ({
                     usuarioId: values.usuarioId,
                     servicioId: values.servicioId,
                     costo: costoServicio[0].costo,
-                    fecha: nuevaFecha,
+                    fecha: new Date(values.fecha),
                     activo: true
                 }
 
@@ -171,7 +170,7 @@ const Formulario = ({
                         },
                     ]}
                 >  
-                    <DatePicker  onChange={(date, dateString) => setNuevaFecha(dateString)}/>
+                    <DatePicker format={'DD-MM-YYYY'} />
                 </Form.Item>
             </Col>
           </Row>

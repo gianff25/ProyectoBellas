@@ -1,6 +1,5 @@
 import { Button, Col, Form, Input, Row, InputNumber } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { urls } from '../variables-globales/InitialReducer';
+import React, { useEffect } from 'react';
 import Swal from 'sweetalert2';
 
 const Fromulario = ({

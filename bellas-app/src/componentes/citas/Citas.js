@@ -62,7 +62,7 @@ const Citas = () => {
 
 
     useEffect(() => {
-       fetch(Servicios)
+        fetch(Servicios)
         .then(res => res.json())
         .then(respuesta=> { 
             setDbServicio(respuesta);

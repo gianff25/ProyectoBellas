@@ -73,7 +73,7 @@ const Formulario = ({
                                 method: 'PUT',
                                 headers: {
                                   "Content-Type": "application/json",
-                              },
+                                  },
                                 body: JSON.stringify(usuarioEditado)
                             })
                             setLoading(true);

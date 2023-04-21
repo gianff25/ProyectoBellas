@@ -43,7 +43,14 @@ const Usuarios = () => {
                 await fetch(Usuarios + id, {
                     method: 'DELETE'
                 })
-                .then(() => setLoading(true));
+                .then(() => {
+                    Swal.fire(
+                        'Usuario Eliminado con exito!',
+                        '',
+                        'success'
+                    )
+                    setLoading(true)
+                });
             }
           })
     }
