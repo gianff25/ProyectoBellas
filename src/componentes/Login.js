@@ -5,27 +5,27 @@ import { useDispatch } from './variables-globales/initialProvider';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '../Global.css';
 import React, { useEffect, useState } from 'react';
-import { urls } from './variables-globales/InitialReducer';
+// import { urls } from './variables-globales/InitialReducer';
 import Swal from 'sweetalert2';
 
 const Login = () => {
 
-    const {Usuarios} = urls;
+    // const {Usuarios} = urls;
 
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
     const [dbUsers, setDbUsers] = useState([]);
 
-    useEffect(() => {
-        fetch(Usuarios)
-        .then(res => res.json())
-        .then(respuesta=> { 
-            console.log(respuesta);
-            setDbUsers(respuesta);
-        })
-        console.log(dbUsers)
-    }, [])
+    // useEffect(() => {
+    //     fetch(Usuarios)
+    //     .then(res => res.json())
+    //     .then(respuesta=> { 
+    //         console.log(respuesta);
+    //         setDbUsers(respuesta);
+    //     })
+    //     console.log(dbUsers)
+    // }, [])
     
     const onFinish = (values) => {
         console.log('Success:', values);

@@ -1,4 +1,4 @@
-import { DatabaseOutlined, SettingOutlined, HomeOutlined, LogoutOutlined, ScheduleOutlined } from '@ant-design/icons';
+import { SettingOutlined, HomeOutlined, LogoutOutlined, ScheduleOutlined } from '@ant-design/icons';
 import {Link} from 'react-router-dom'
 
 const items = [

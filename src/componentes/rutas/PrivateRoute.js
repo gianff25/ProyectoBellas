@@ -8,10 +8,10 @@ const PrivateRoute = ({children, logeado, redirectTo, isRol, isRegistro}) => {
     //     return <Navigate to={redirectTo} />
     // }
 
-    if(logeado == 0 && isRegistro == true){
+    if(logeado === 0 && isRegistro === true){
         return children;
     }
-    return logeado == 1 ? children : <Navigate to={redirectTo} /> 
+    return logeado === 1 ? children : <Navigate to={redirectTo} /> 
 
 }
 export default PrivateRoute;
