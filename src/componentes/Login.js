@@ -105,7 +105,7 @@ const Login = () => {
                             }
                         />
                     </Form.Item>
-                    <h2 className='loginSubtitulo'>Contrasena:</h2>
+                    <h2 className='loginSubtitulo'>Contraseña:</h2>
                     <Form.Item
                         label=""
                         name="password"
