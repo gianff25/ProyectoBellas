@@ -1,25 +1,25 @@
 import './App.css';
 // import axios, {AxiosResponse} from 'axios';
-// import NavBar from './componentes/navbar/NavBar';
-// import {Route, Routes} from 'react-router-dom'
+import NavBar from './componentes/navbar/NavBar';
+import {Route, Routes} from 'react-router-dom'
 import Login from './componentes/Login';
-// import Registrar from "./componentes/Registrar";
-// import PrivateRoute from './componentes/rutas/PrivateRoute';
-// import Home from './componentes/Home';
-// import { useLogeado } from './componentes/variables-globales/initialProvider';
-// import Servicios from './componentes/servicios/Servicios';
-// import Citas from './componentes/citas/Citas';
-// import Usuarios from './componentes/usuarios/Usuarios';
-// import React, { useEffect } from 'react';
+import Registrar from "./componentes/Registrar";
+import PrivateRoute from './componentes/rutas/PrivateRoute';
+import Home from './componentes/Home';
+import { useLogeado } from './componentes/variables-globales/initialProvider';
+import Servicios from './componentes/servicios/Servicios';
+import { urls } from './componentes/variables-globales/InitialReducer';
+import Usuarios from './componentes/usuarios/Usuarios';
+import React, { useEffect } from 'react';
 
 
 function App() {
 
-  // const {Citas} = urls;
-  // const estado = useLogeado();
+  const {Citas} = urls;
+  const estado = useLogeado();
 
-  // const {logeado} = estado;
-  // console.log(logeado)
+  const {logeado} = estado;
+  console.log(logeado)
 
   // useEffect(() => {
   //   axios.get(Citas)
@@ -30,12 +30,12 @@ function App() {
 
   return (
     <div className="App">
-        {/* <Routes>
+        <Routes>
             <Route path='*' element={<h1>Not Found!!</h1>} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/registrar" 
                 element={
-                  <PrivateRoute logeado={logeado} redirectTo={logeado === 0 ? "/registrar" : "/"} isRegistro={true}>
+                  <PrivateRoute logeado={logeado} redirectTo={logeado == 0 ? "/registrar" : "/"} isRegistro={true}>
                     <Registrar/>
                   </PrivateRoute>
                 }
@@ -70,8 +70,7 @@ function App() {
                 } 
               />
             </Route>
-        </Routes> */}
-        <Login />
+        </Routes>
     </div>
   );
 }

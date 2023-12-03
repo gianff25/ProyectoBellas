@@ -28,14 +28,13 @@ const Login = () => {
     }, [])
     
     console.log(Usuarios);
-    
+
     const onFinish = (values) => {
         console.log('Success:', values);
         
-        setDbUsers([]);
         let auth = dbUsers.filter(e => e.Telefono === values.user && e.Contraseña === values.password );
 
-        console.log(dbUsers)
+        console.log(auth)
         if( auth.length > 0){
             localStorage.setItem('usuario', JSON.stringify(auth))
             console.log(localStorage.getItem('usuario'));
