@@ -19,18 +19,21 @@ const NavBar = () => {
     console.log(usuario)
 
     useEffect(() => {
-      fetch(Roles)
-      .then(res=>res.json())
-      .then(res => {
-        let rol = res.filter(x => x.id === usuario[0].rolId)
-        console.log(rol)
-        if(rol[0].nombre !== "Administrador"){
-          setLista(items)
-        }
-        else{
-          setLista(iAdmin)
-        }
-      })
+    //   fetch(Roles)
+    //   .then(res=>res.json())
+    //   .then(res => {
+    //     let rol = res.filter(x => x.id === usuario[0].rolId)
+    //     console.log(rol)
+    //     if(rol[0].nombre !== "Administrador"){
+    //       setLista(items)
+    //     }
+    //     else{
+    //       setLista(iAdmin)
+    //     }
+    //   })
+
+    setLista(iAdmin)
+
     }, [])
 
     
