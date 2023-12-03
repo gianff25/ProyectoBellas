@@ -22,7 +22,7 @@ function App() {
   console.log(logeado)
 
   useEffect(() => {
-    localStorage.getItem('data') == null ? (localStorage.setItem('data', JSON.stringfy([{"id":"Iamwv","name":"Juan","lastName":"Peres"},{"id":"lorbU","name":"Jorge","lastName":"Robles"},{"id":"CvQhF","name":"Jose","lastName":"Hernandez"},{"id":"dgDc9","name":"Corni","lastName":"Rojo"}]))) : <></>;
+    localStorage.getItem('data') == null ? (localStorage.setItem('data', JSON.stringify([{"id":"Iamwv","name":"Juan","lastName":"Peres"},{"id":"lorbU","name":"Jorge","lastName":"Robles"},{"id":"CvQhF","name":"Jose","lastName":"Hernandez"},{"id":"dgDc9","name":"Corni","lastName":"Rojo"}]))) : <></>;
     localStorage.getItem('logeado') == null ? (localStorage.setItem('logeado', 0)) : <></>;
   }, [])
 
