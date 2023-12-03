@@ -58,7 +58,7 @@ const Usuarios = () => {
     const filtrar = (e) => {
         let busqueda = e.target.value.toLowerCase();
         setDb(db.filter(x => x.nombre.toLowerCase().includes(busqueda)))
-        if(busqueda == "" && db.length == 0){
+        if(busqueda === "" && db.length === 0){
             setLoading(true)
         }
     }

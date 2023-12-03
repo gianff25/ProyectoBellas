@@ -2,13 +2,11 @@ import './App.css';
 // import axios, {AxiosResponse} from 'axios';
 import NavBar from './componentes/navbar/NavBar';
 import {Route, Routes} from 'react-router-dom'
-import CrudTable from "./componentes/CrudTable";
 import Login from './componentes/Login';
 import Registrar from "./componentes/Registrar";
 import PrivateRoute from './componentes/rutas/PrivateRoute';
 import Home from './componentes/Home';
 import { useLogeado } from './componentes/variables-globales/initialProvider';
-import { urls } from './componentes/variables-globales/InitialReducer';
 import Servicios from './componentes/servicios/Servicios';
 import Citas from './componentes/citas/Citas';
 import Usuarios from './componentes/usuarios/Usuarios';
@@ -37,7 +35,7 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/registrar" 
                 element={
-                  <PrivateRoute logeado={logeado} redirectTo={logeado == 0 ? "/registrar" : "/"} isRegistro={true}>
+                  <PrivateRoute logeado={logeado} redirectTo={logeado === 0 ? "/registrar" : "/"} isRegistro={true}>
                     <Registrar/>
                   </PrivateRoute>
                 }
