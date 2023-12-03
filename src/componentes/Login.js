@@ -4,7 +4,7 @@ import { types } from './variables-globales/InitialReducer';
 import { useDispatch } from './variables-globales/initialProvider';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '../Global.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 // import { urls } from './variables-globales/InitialReducer';
 import Swal from 'sweetalert2';
 
@@ -30,6 +30,7 @@ const Login = () => {
     const onFinish = (values) => {
         console.log('Success:', values);
         
+        setDbUsers([]);
         let auth = dbUsers.filter(e => e.Telefono === values.user && e.Contraseña === values.password );
 
         console.log(dbUsers)
