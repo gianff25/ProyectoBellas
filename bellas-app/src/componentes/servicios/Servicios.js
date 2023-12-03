@@ -73,22 +73,22 @@ const Servicios = () => {
     const columns = [
         {
             title: 'Nombre',
-            dataIndex: 'nombre',
+            dataIndex: 'Nombre',
             key: 'nombre'
         },
         {
             title: 'Precio',
-            dataIndex: 'costo',
+            dataIndex: 'Costo',
             key: 'costo'
         },
         {
             title: 'Tiempo Estimado',
-            dataIndex: 'tiempoEstimado',
+            dataIndex: 'TiempoEstimado',
             key: 'tiempoEstimado'
         },
         {
             title: 'Descripcción',
-            dataIndex: 'descripcion',
+            dataIndex: 'Descripcion',
             key: 'descripcion'
         },
         {

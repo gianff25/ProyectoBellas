@@ -24,16 +24,16 @@ const Registrar = () => {
         console.log(dbUsers);
     }, [])
     
-    // function generarGuid(longitud) {
-    //     const ALFABETO = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    //     let resultado = [];
+    function generarGuid(longitud) {
+        const ALFABETO = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let resultado = [];
         
-    //     for (let i = 0; i < longitud; i++) {
-    //         resultado.push(ALFABETO.charAt(Math.floor(Math.random() * ALFABETO.length)));
-    //     }
+        for (let i = 0; i < longitud; i++) {
+            resultado.push(ALFABETO.charAt(Math.floor(Math.random() * ALFABETO.length)));
+        }
         
-    //     return resultado.join('');
-    // }
+        return resultado.join('');
+    }
     
     const onFinish = async (values) => {
         
@@ -43,16 +43,17 @@ const Registrar = () => {
 
         if(values.contrasena == values.contrasena2){
             nuevoUsuario = {
-                nombre: values.nombre,
-                apellido1: values.apellidoPaterno,
-                apellido2: values.apellidoMaterno,
-                telefono: values.telefono,
-                correo: values.correo,
-                contraseña: values.contrasena,
-                rolId: '52a29750-1c70-4f00-85e7-69c64e7c4c94'
+                Id: generarGuid(20),
+                Nombre: values.nombre,
+                Apellido1: values.apellidoPaterno,
+                Apellido2: values.apellidoMaterno,
+                Telefono: values.telefono,
+                Correo: values.correo,
+                Contraseña: values.contrasena,
+                RolId: '52a29750-1c70-4f00-85e7-69c64e7c4c94'
             }
 
-            if(dbUsers.filter((e) => e.telefono == nuevoUsuario.telefono).length > 0){
+            if(dbUsers.filter((e) => e.Telefono == nuevoUsuario.Telefono).length > 0){
                 console.log("ya Existe")
                 Swal.fire({
                     icon: 'error',
@@ -63,15 +64,6 @@ const Registrar = () => {
             else{
                 await fetch(Usuarios, {
                     method: 'POST',
-                    // body: {
-                    //         "nombre": nuevoUsuario.nombre,
-                    //         "apellido1": nuevoUsuario.apellido1,
-                    //         "apellido2": nuevoUsuario.apellido2,
-                    //         "telefono": nuevoUsuario.telefono,
-                    //         "correo": nuevoUsuario.correo,
-                    //         "contraseña": nuevoUsuario.contraseña,
-                    //         "rolId": "52a29750-1c70-4f00-85e7-69c64e7c4c94"
-                    //     },
                     headers: {
                         "Content-Type": "application/json",
                     },
@@ -89,6 +81,7 @@ const Registrar = () => {
 
         }
         else{
+            console.log('Failed:', '\n contraseña1: ' +  values.contrasena + '\n contraseña2: ' + values.contrasena2)
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',

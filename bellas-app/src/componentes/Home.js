@@ -8,7 +8,7 @@ const Home = () => {
     console.log(usuario)
   return (
     <>
-      <h1>Hola {usuario && usuario[0].nombre} {usuario && usuario[0].apellido1}</h1>
+      <h1>Hola {usuario && usuario[0].Nombre} {usuario && usuario[0].Apellido1}</h1>
     </>
   )
 }

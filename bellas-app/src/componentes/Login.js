@@ -5,7 +5,6 @@ import { useDispatch } from './variables-globales/initialProvider';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '../Global.css';
 import React, { useEffect, useState } from 'react';
-// import axios, {AxiosResponse} from 'axios';
 import { urls } from './variables-globales/InitialReducer';
 import Swal from 'sweetalert2';
 
@@ -25,14 +24,15 @@ const Login = () => {
             console.log(respuesta);
             setDbUsers(respuesta);
         })
-        console.log(dbUsers);
+        console.log(dbUsers)
     }, [])
     
     const onFinish = (values) => {
         console.log('Success:', values);
+        
+        let auth = dbUsers.filter(e => e.Telefono === values.user && e.Contraseña === values.password );
 
-        let auth = dbUsers.filter(e => e.telefono === values.user && e.contraseña === values.password );
-
+        console.log(dbUsers)
         if( auth.length > 0){
             localStorage.setItem('usuario', JSON.stringify(auth))
             console.log(localStorage.getItem('usuario'));

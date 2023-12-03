@@ -62,36 +62,41 @@ const Citas = () => {
 
 
     useEffect(() => {
+        
         fetch(Servicios)
         .then(res => res.json())
         .then(respuesta=> { 
             setDbServicio(respuesta);
+            console.log(dbServicio)
         })
         fetch(Citas)
         .then(res => res.json())
         .then(respuesta=> { 
-            setDbCitas(respuesta.filter(x=> x.usuarioId===user[0].id && x.activo === true));
+            
+            setDbCitas(respuesta)
+            // setDbCitas(respuesta.filter(x=> x.Id===user[0].Id && x.Activo === true));
+           console.log(dbCitas)
         })
-
+        
         setLista(dbCitas.map(fila => {
-            let servicio = dbServicio.filter(x=> x.id === fila.servicioId)
-           return{
-                id: fila.id,
-                nombre: user[0].nombre,
-                servicio: servicio[0].nombre,
-                costo: servicio[0].costo,
-                fecha: fila.fecha,
-                servicioId: fila.servicioId,
-                usuarioId: fila.usuarioId
-           } 
+            let servicio = dbServicio.filter(x=> x.Id.toLowerCase() === fila.ServicioId.toLowerCase())
+            console.log(dbServicio)
+            return{
+                id: fila.Id,
+                nombre: user[0].Nombre,
+                servicio: servicio[0].Nombre,
+                costo: servicio[0].Costo,
+                fecha: fila.Fecha,
+                servicioId: fila.ServicioId,
+                usuarioId: fila.UsuarioId
+            } 
         }))
-
-
+        
         setLoading(false)
+        console.log(dbCitas)
 
     }, [loading])
 
-    console.log(lista)
     const columns = [
         {
             title: 'Nombre',
@@ -145,7 +150,7 @@ const Citas = () => {
 
                 <Button 
                     danger 
-                    onClick={() => eliminarCita(fila.id)}
+                    onClick={() => eliminarCita(fila.Id)}
                 >
                     <DeleteOutlined /> 
                     Eliminar

@@ -19,24 +19,25 @@ const Formulario = ({
 
 
     const [form] = Form.useForm();
-    const {nombre, costo, fecha, id, servicioId, usuarioId} = opcion;
+    const {Nombre, Costo, Fecha, Id, ServicioId, UsuarioId} = opcion;
 
     useEffect(() => {
         debugger
         if(opcion != null){
             form.setFieldsValue({
-                nombre: usuarioId,
-                fecha: moment(fecha).format('DD-MM-YYYY'),
-                servicio: servicioId
+                Nombre: UsuarioId,
+                Necha: moment(Fecha),
+                Nervicio: ServicioId
             })
         }
+        console.log(usuario)
     }, [opcion])
 
 
     const AñadirCita = async (values) => {
         console.log(nuevaFecha)
 
-        let costoServicio = Servicios.filter(x => x.id === values.servicioId)
+        let costoServicio = Servicios.filter(x => x.Id === values.servicioId)
 
         let cita = {
             usuarioId: usuario[0].id,
@@ -48,7 +49,7 @@ const Formulario = ({
 
         console.log(cita)
 
-        if(dbCitas.filter(e => e.servicioId === values.servicioId && e.id != id).length != 0){
+        if(dbCitas.filter(e => e.ServicioId === values.servicioId && e.Id != Id).length != 0){
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -56,19 +57,19 @@ const Formulario = ({
               })
         }
         else{
-            if(nombre != undefined){
+            if(Nombre != undefined){
                 
                 let citaEditada = {
-                    id: usuario[0].id,
-                    usuarioId: values.usuarioId,
-                    servicioId: values.servicioId,
-                    costo: costoServicio[0].costo,
-                    fecha: new Date(values.fecha),
+                    id: usuario[0].Id,
+                    usuarioId: values.UsuarioId,
+                    servicioId: values.ServicioId,
+                    costo: costoServicio[0].Costo,
+                    fecha: new Date(values.Fecha),
                     activo: true
                 }
 
 
-                if(citaEditada.costo != costo || citaEditada.usuarioId != usuarioId || citaEditada.servicioId != servicioId|| citaEditada.fecha != fecha){
+                if(citaEditada.costo != Costo || citaEditada.usuarioId != UsuarioId || citaEditada.servicioId != ServicioId|| citaEditada.fecha != Fecha){
                     Swal.fire({
                         title: 'Seguro que desea actualizar esta cita?',
                         icon: 'warning',
@@ -78,7 +79,7 @@ const Formulario = ({
                         confirmButtonText: 'Actualizar'
                       }).then(async(result) => {
                         if (result.isConfirmed) {
-                            await fetch(url + id, {
+                            await fetch(url + Id, {
                                 method: 'PUT',
                                 headers: {
                                   "Content-Type": "application/json",
@@ -131,7 +132,7 @@ const Formulario = ({
               >
                     <Input
                         disabled
-                        placeholder={usuario[0].nombre}
+                        placeholder={usuario[0].Nombre}
                     />   
 
               </Form.Item>
@@ -152,8 +153,8 @@ const Formulario = ({
 
                     >   
                         {Servicios && Servicios.map((u,i)=>
-                            <Select.Option value={u.id} key={i}>
-                                {u.nombre}
+                            <Select.Option value={u.Id} key={i}>
+                                {u.Nombre}
                             </Select.Option>
                         )}
                     </Select>
@@ -175,12 +176,12 @@ const Formulario = ({
             </Col>
           </Row>
           <Row gutter={16}>
-            <Col style={nombre != undefined ? {marginRight: "2vw"} : {marginRight: 0}} span={3}>
+            <Col style={Nombre != undefined ? {marginRight: "2vw"} : {marginRight: 0}} span={3}>
                 <Button
                     type='primary'
                     htmlType='submit'
                 >
-                    {nombre != (undefined) ? "Actualzar" : "Añadir"}
+                    {Nombre != (undefined) ? "Actualzar" : "Añadir"}
                 </Button>
                 
             </Col>
