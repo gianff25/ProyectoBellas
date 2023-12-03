@@ -21,12 +21,9 @@ function App() {
   const {logeado} = estado;
   console.log(logeado)
 
-  // useEffect(() => {
-  //   axios.get(Citas)
-  //     .then((respuesta: AxiosResponse<any>) => {
-  //       console.log(respuesta.data);
-  //     })
-  // }, [])
+  useEffect(() => {
+    localStorage.getItem('data') == null ? (localStorage.setItem('data', JSON.stringfy([{"id":"Iamwv","name":"Juan","lastName":"Peres"},{"id":"lorbU","name":"Jorge","lastName":"Robles"},{"id":"CvQhF","name":"Jose","lastName":"Hernandez"},{"id":"dgDc9","name":"Corni","lastName":"Rojo"}]))) : <></>
+  }, [])
 
   return (
     <div className="App">
