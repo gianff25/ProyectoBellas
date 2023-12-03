@@ -27,6 +27,8 @@ const Login = () => {
         console.log(dbUsers)
     }, [])
     
+    console.log(Usuarios);
+    
     const onFinish = (values) => {
         console.log('Success:', values);
         
