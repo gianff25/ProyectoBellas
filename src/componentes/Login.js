@@ -4,7 +4,7 @@ import { types } from './variables-globales/InitialReducer';
 import { useDispatch } from './variables-globales/initialProvider';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '../Global.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { urls } from './variables-globales/InitialReducer';
 import Swal from 'sweetalert2';
 
