@@ -17,8 +17,8 @@ const Login = () => {
     const navigate = useNavigate();
     const [dbUsers, setDbUsers] = useState([]);
 
-    useEffect(async () => {
-        await fetch('http://appbellasweb.somee.com/api/usuarios/')
+    useEffect(() => {
+        fetch('http://appbellasweb.somee.com/api/usuarios/')
         .then(res => res.json())
         .then(respuesta=> { 
             console.log(respuesta);

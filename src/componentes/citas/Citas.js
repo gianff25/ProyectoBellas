@@ -27,7 +27,7 @@ const Citas = () => {
         setOpen(false);
     }
 
-    const eliminarCita = async (id) =>{
+    const eliminarCita = async (Id) =>{
         Swal.fire({
             title: 'Seguro que desea eliminar esta cita?',
             icon: 'warning',
@@ -57,7 +57,7 @@ const Citas = () => {
         if(busqueda === "" || lista.length === 0){
             setLoading(true)
         }
-        setLista(lista.filter(x => x.nombre.toLowerCase().includes(busqueda)))
+        setLista(lista.filter(x => x.Nombre.toLowerCase().includes(busqueda)))
     }
 
 
@@ -82,8 +82,8 @@ const Citas = () => {
             let servicio = dbServicio.filter(x=> x.Id.toLowerCase() === fila.ServicioId.toLowerCase())
             console.log(dbServicio)
             return{
-                id: fila.Id,
-                nombre: user[0].Nombre,
+                Id: fila.Id,
+                Nombre: user[0].Nombre,
                 servicio: servicio[0].Nombre,
                 costo: servicio[0].Costo,
                 fecha: fila.Fecha,
@@ -100,23 +100,23 @@ const Citas = () => {
     const columns = [
         {
             title: 'Nombre',
-            key: 'nombre',
+            key: 'Nombre',
             // render: ((_,fila) => {
-            //     let usuario = dbUsuarios.filter(x=> x.id === fila.usuarioId)
+            //     let usuario = dbUsuarios.filter(x=> x.Id === fila.usuarioId)
             //     return (
-            //         <p>{usuario && usuario[0].nombre}</p>
+            //         <p>{usuario && usuario[0].Nombre}</p>
             //     )
             // })
-            dataIndex: 'nombre'
+            dataIndex: 'Nombre'
         },
         {
             title: 'Servicio',
             key: 'servicio',
             dataIndex: 'servicio'
             // render: ((_,fila) => {
-            //     let servicio = dbServicio.filter(x=> x.id === fila.servicioId)
+            //     let servicio = dbServicio.filter(x=> x.Id === fila.servicioId)
             //     return (
-            //         <p>{servicio && servicio[0].nombre}</p>
+            //         <p>{servicio && servicio[0].Nombre}</p>
             //     )
             // })
         },
@@ -125,7 +125,7 @@ const Citas = () => {
             key: 'costo',
             dataIndex: 'costo'
             // render: ((_,fila) => {
-            //     let servicio = dbServicio.filter(x=> x.id === fila.servicioId)
+            //     let servicio = dbServicio.filter(x=> x.Id === fila.servicioId)
             //     return (
             //         <p>{servicio && servicio[0].costo}</p>
             //     )
@@ -173,7 +173,7 @@ const Citas = () => {
             </Col>
             <Col span={16}>
                 <Input  
-                    placeholder='Bucar por nombre'
+                    placeholder='Bucar por Nombre'
                     onChange={filtrar}  
                 />
             </Col>
