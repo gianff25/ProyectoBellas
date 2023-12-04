@@ -18,7 +18,7 @@ const Login = () => {
     const [dbUsers, setDbUsers] = useState([]);
 
     useEffect(() => {
-        fetch(Usuarios)
+        fetch('http://appbellasweb.somee.com/api/usuarios/')
         .then(res => res.json())
         .then(respuesta=> { 
             console.log(respuesta);
