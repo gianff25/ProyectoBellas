@@ -17,14 +17,13 @@ const Login = () => {
     const navigate = useNavigate();
     const [dbUsers, setDbUsers] = useState([]);
 
-    useEffect(() => {
-        fetch('http://appbellasweb.somee.com/api/usuarios/')
+    useEffect(async () => {
+        await fetch('http://appbellasweb.somee.com/api/usuarios/')
         .then(res => res.json())
         .then(respuesta=> { 
             console.log(respuesta);
-            // setDbUsers(respuesta);
+            setDbUsers(respuesta);
         })
-        // console.log(dbUsers)
     }, [])
     
     console.log(Usuarios);
