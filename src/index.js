@@ -6,6 +6,13 @@ import reportWebVitals from './reportWebVitals';
 // import { router } from './Routing';
 import { BrowserRouter } from 'react-router-dom';
 import InitialProvider from './componentes/variables-globales/initialProvider';
+import LogRocket from 'logrocket';
+
+LogRocket.init('7so3ue/bellasbeautyroom', {
+    name: 'Iván',
+    email: 'givanff25@gmail.com',
+  
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
