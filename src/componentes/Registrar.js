@@ -60,8 +60,7 @@ const Registrar = () => {
                   })
             }
             else{
-                console.log(nuevoUsuario)
-                await fetch('http://appbellasweb.somee.com/api/usuarios/', {
+                await fetch('http://appbellasweb.somee.com/api/usuarios', {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",
@@ -98,7 +97,7 @@ const Registrar = () => {
         let campos = form.getFieldsValue()
         console.log(campos)
 
-        if((campos.nombre || campos.apellidoPaterno || campos.apellidoMaterno || campos. contrasena || campos.contrasena2 || campos.correo || campos.telefono) != ('' || undefined) ){
+        if((campos.nombre || campos.apellidoPaterno || campos.apellidoMaterno || campos.contrasena || campos.contrasena2 || campos.correo || campos.telefono) != ('' || undefined) ){
             console.log('hay datos')
             Swal.fire({
                 title: 'Seguro que desea regresar al inicio?',
