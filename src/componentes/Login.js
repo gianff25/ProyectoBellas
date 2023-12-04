@@ -22,9 +22,9 @@ const Login = () => {
         .then(res => res.json())
         .then(respuesta=> { 
             console.log(respuesta);
-            setDbUsers(respuesta);
+            // setDbUsers(respuesta);
         })
-        console.log(dbUsers)
+        // console.log(dbUsers)
     }, [])
     
     console.log(Usuarios);

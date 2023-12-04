@@ -12,16 +12,19 @@ const Usuarios = () => {
     const [loading, setLoading] = useState(false)
     const [open, setOpen] = useState(false)
     const [usuario, setUsuario] = useState();
+    const [isEditar, setIsEditar] = useState(false);
 
     useEffect(() => {
         fetch(Usuarios)
         .then(res => res.json())
-        .then(res => setDb(res))
-
+        .then(res => {
+            setDb(res)
+        })
         setLoading(false)
     }, [loading])
 
     const onOpen = (fila) => {
+        fila.Id != undefined ? setIsEditar(true) : setIsEditar(false);
         setOpen(true);
         setUsuario(fila)
     }
@@ -68,22 +71,22 @@ const Usuarios = () => {
         {
             title: 'Nombre',
             key: 'nombre',
-            dataIndex: 'nombre'
+            dataIndex: 'Nombre'
         },
         {
             title: 'Apellido',
             key: 'apellido1',
-            dataIndex: 'apellido1'
+            dataIndex: 'Apellido1'
         },
         {
             title: 'Correo',
             key: 'correo',
-            dataIndex: 'correo'
+            dataIndex: 'Correo'
         },
         {
             title: 'Telefono',
             key: 'telefono',
-            dataIndex: 'telefono'
+            dataIndex: 'Telefono'
         },
         {
             title: 'Acción',
@@ -135,9 +138,9 @@ const Usuarios = () => {
             columns={columns}
         />
         <Drawer
-            title="Añadir nuevo usuario"
+            title={isEditar ? "Editar usuario" : "Añadir nuevo usuario"}
             width={720}
-            onClose={() => setOpen(false)}
+            onClose={onClose}
             open={open}
             bodyStyle={{
                 paddingBottom: 80,

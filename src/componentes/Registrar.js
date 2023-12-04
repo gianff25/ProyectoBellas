@@ -18,10 +18,8 @@ const Registrar = () => {
         fetch(Usuarios)
         .then(res => res.json())
         .then(respuesta=> { 
-            console.log(respuesta);
             setDbUsers(respuesta);
         })
-        console.log(dbUsers);
     }, [])
     
     function generarGuid(longitud) {
@@ -62,7 +60,8 @@ const Registrar = () => {
                   })
             }
             else{
-                await fetch(Usuarios, {
+                console.log(nuevoUsuario)
+                await fetch('http://appbellasweb.somee.com/api/usuarios/', {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",

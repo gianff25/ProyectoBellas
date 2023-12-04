@@ -14,7 +14,7 @@ const Formulario = ({
     const [form] = Form.useForm();
     const {Roles} = urls;
     const [roles, setRoles] = useState([]);
-    const {nombre, apellido1, apellido2, correo, telefono, contraseña, rolId} = usuario;
+    const {Nombre, Apellido1, Apellido2, Correo, Telefono, Contraseña, RolId} = usuario;
 
     useEffect(() => {
         fetch(Roles)
@@ -22,20 +22,21 @@ const Formulario = ({
         .then(res=> setRoles(res))
         if(usuario != null){
             form.setFieldsValue({
-                nombre: nombre,
-                apellido1: apellido1,
-                apellido2: apellido2,
-                telefono: telefono,
-                correo: correo,
-                contraseña: contraseña,
-                rolId: rolId
+                Nombre: Nombre,
+                Apellido1: Apellido1,
+                Apellido2: Apellido2,
+                Telefono: Telefono,
+                Correo: Correo,
+                Contraseña: Contraseña,
+                RolId: RolId
             })
         }
     }, [usuario])
 
     const AñadirUsuario = async (values) => {
 
-        if(db.filter(e => e.telefono === values.nombre && e.id != usuario.id).length != 0){
+      console.log(values)
+        if(db.filter(e => e.Telefono === values.Nombre && e.Id != usuario.Id).length != 0){
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -43,23 +44,23 @@ const Formulario = ({
               })
         }
         else{
-            if(usuario.nombre != undefined){
+            if(usuario.Nombre != undefined){
                 
                 let usuarioEditado = {
-                    id: usuario.id,
-                    nombre: values.nombre,
-                    apellido1: values.apellido1,
-                    apellido2: values.apellido2,
-                    telefono: values.telefono,
-                    correo: values.correo,
-                    contraseña: values.contraseña,
-                    rolId: values.rolId
+                    Id: usuario.Id,
+                    Nombre: values.Nombre,
+                    Apellido1: values.Apellido1,
+                    Apellido2: values.Apellido2,
+                    Telefono: values.Telefono,
+                    Correo: values.Correo,
+                    Contraseña: values.Contraseña,
+                    RolId: values.RolId
                 }
 
 
-                if(usuarioEditado.apellido1 != apellido1 || nombre != usuarioEditado.nombre || apellido2 != usuarioEditado.apellido2 
-                    || usuarioEditado.telefono != telefono || usuarioEditado.correo != correo || usuarioEditado.contraseña != contraseña
-                    || rolId != usuarioEditado.rolId){
+                if(usuarioEditado.Apellido1 != Apellido1 || Nombre != usuarioEditado.Nombre || Apellido2 != usuarioEditado.Apellido2 
+                    || usuarioEditado.Telefono != Telefono || usuarioEditado.Correo != Correo || usuarioEditado.Contraseña != Contraseña
+                    || RolId != usuarioEditado.RolId){
                     Swal.fire({
                         title: 'Seguro que desea actualizar este usuario?',
                         icon: 'warning',
@@ -69,7 +70,7 @@ const Formulario = ({
                         confirmButtonText: 'Actualizar'
                       }).then(async(result) => {
                         if (result.isConfirmed) {
-                            await fetch(url + usuario.id, {
+                            await fetch(url + usuario.Id, {
                                 method: 'PUT',
                                 headers: {
                                   "Content-Type": "application/json",
@@ -117,7 +118,7 @@ const Formulario = ({
           <Row gutter={16}>
             <Col span={8}>
               <Form.Item
-                name="nombre"
+                name="Nombre"
                 label="Nombre"
                 rules={[
                   {
@@ -132,7 +133,7 @@ const Formulario = ({
             <Col span={8}>
                 <Form.Item
                     label="Apellido Paterno"
-                    name="apellido1"
+                    name="Apellido1"
                     rules={[
                         {
                           required: true,
@@ -146,7 +147,7 @@ const Formulario = ({
             <Col span={8}>
                 <Form.Item
                     label="Apellido Materno"
-                    name="apellido2"
+                    name="Apellido2"
                     rules={[
                         {
                           required: true,
@@ -161,22 +162,22 @@ const Formulario = ({
           <Row gutter={16}>
             <Col span={8}>
               <Form.Item
-                name="telefono"
+                name="Telefono"
                 label="Telefono"
                 rules={[
                   {
                     required: true,
-                    message: 'Introducir telefono',
+                    message: 'Introducir Telefono',
                   },
                 ]}
               >
-                <Input placeholder="Número de telefono" />
+                <Input placeholder="Número de Telefono" />
               </Form.Item>
             </Col>
             <Col span={8}>
                 <Form.Item
                     label="Correo"
-                    name="correo"
+                    name="Correo"
                     rules={[
                         {
                           required: true,
@@ -190,11 +191,11 @@ const Formulario = ({
             <Col span={8}>
                 <Form.Item
                     label="Contraseña"
-                    name="contraseña"
+                    name="Contraseña"
                     rules={[
                         {
                           required: true,
-                          message: 'Introducir contraseña .',
+                          message: 'Introducir Contraseña .',
                         },
                     ]}
                 >  
@@ -206,7 +207,7 @@ const Formulario = ({
           <Row gutter={16}>
             <Col span={8}>
               <Form.Item
-                name="rolId"
+                name="RolId"
                 label="DRol"
                 rules={[
                   {
@@ -220,8 +221,8 @@ const Formulario = ({
 
                     >   
                         {roles && roles.map((u,i)=>
-                            <Select.Option value={u.id} key={i}>
-                                {u.nombre}
+                            <Select.Option value={u.Id} key={i}>
+                                {u.Nombre}
                             </Select.Option>
                         )}
                     </Select>
@@ -229,12 +230,12 @@ const Formulario = ({
             </Col>
           </Row>
           <Row gutter={16}>
-            <Col style={usuario.nombre != undefined ? {marginRight: "2vw"} : {marginRight: 0}} span={3}>
+            <Col style={usuario.Nombre != undefined ? {marginRight: "2vw"} : {marginRight: 0}} span={3}>
                 <Button
                     type='primary'
                     htmlType='submit'
                 >
-                    {usuario.nombre != (undefined) ? "Actualzar" : "Añadir"}
+                    {usuario.Nombre != (undefined) ? "Actualzar" : "Añadir"}
                 </Button>
                 
             </Col>
